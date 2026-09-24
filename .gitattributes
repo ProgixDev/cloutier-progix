@@ -1,0 +1,18 @@
+# Normalise line endings to LF in the working tree on every platform.
+#
+# Prettier's `endOfLine` default is "lf", so a Windows checkout with
+# core.autocrlf=true fails `pnpm format:check` on files nobody touched. Pinning
+# eol=lf here keeps the gate meaningful instead of noisy.
+* text=auto eol=lf
+
+# Binary assets — never normalise, never diff as text.
+*.png binary
+*.jpg binary
+*.jpeg binary
+*.gif binary
+*.ico binary
+*.webp binary
+*.mp4 binary
+*.woff binary
+*.woff2 binary
+*.pdf binary
