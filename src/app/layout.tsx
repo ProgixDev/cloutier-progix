@@ -1,33 +1,39 @@
 import type { Metadata } from "next";
-import { Geist, Geist_Mono, Inter, Space_Grotesk } from "next/font/google";
+import localFont from "next/font/local";
 import { MotionProvider } from "@/components/motion";
 import { SiteGate } from "@/features/site-gate";
 import { site } from "@/core/site";
 import "./globals.css";
 
-const geistSans = Geist({
+// Fonts are self-hosted (latin subset of each variable font from Google Fonts,
+// SIL OFL — licenses in ./fonts) so the build never fetches Google Fonts: a
+// Google response with query-string font URLs broke Turbopack's next/font/google
+// on Vercel ("next/font/google queries have exactly one entry").
+const geistSans = localFont({
+  src: "./fonts/geist-latin-var.woff2",
   variable: "--font-geist-sans",
-  subsets: ["latin"],
+  weight: "100 900",
 });
 
-const geistMono = Geist_Mono({
+const geistMono = localFont({
+  src: "./fonts/geist-mono-latin-var.woff2",
   variable: "--font-geist-mono",
-  subsets: ["latin"],
+  weight: "100 900",
 });
 
 // Brand typefaces for the Progix document (referenced as CSS variables from the
 // devis + site-gate stylesheets): Space Grotesk for display, Inter for body.
-const spaceGrotesk = Space_Grotesk({
+const spaceGrotesk = localFont({
+  src: "./fonts/space-grotesk-latin-var.woff2",
   variable: "--font-display",
-  subsets: ["latin"],
-  weight: ["400", "500", "600", "700"],
+  weight: "300 700",
   display: "swap",
 });
 
-const inter = Inter({
+const inter = localFont({
+  src: "./fonts/inter-latin-var.woff2",
   variable: "--font-body",
-  subsets: ["latin"],
-  weight: ["400", "500", "600", "700"],
+  weight: "100 900",
   display: "swap",
 });
 
